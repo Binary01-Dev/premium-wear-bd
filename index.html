@@ -3,70 +3,1470 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Wear BD</title>
+  <title>Premium Wear BD — Luxury Export Fashion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
-    header { background:#000; color:#fff; text-align:center; padding:40px 20px; }
-    header h1 { font-size:2.5em; margin:0; }
-    header p { font-size:1.2em; margin-top:10px; }
-    nav { background:#333; padding:10px; text-align:center; }
-    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
-    section { padding:50px 20px; text-align:center; }
-    .products { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
-    .product { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); width:250px; }
-    .product img { width:100%; border-radius:8px; }
-    footer { background:#000; color:#fff; text-align:center; padding:20px; }
-    footer p { margin:5px; }
+    /* ============================================================
+       PREMIUM WEAR BD — WORLD-CLASS LUXURY FASHION EXPERIENCE
+       ============================================================ */
+
+    /* ----- design tokens ----- */
+    :root {
+      --black: #050505;
+      --near-black: #0a0a0a;
+      --charcoal: #111111;
+      --graphite: #1a1a1a;
+      --stone: #2a2a2a;
+      --gold: #c9a961;
+      --gold-light: #e0c98a;
+      --gold-dim: rgba(201, 169, 97, 0.2);
+      --white: #ffffff;
+      --off-white: #f5f3ef;
+      --cream: #e8e4dc;
+      --muted: #9a9a9a;
+      --muted-dark: #6b6b6b;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ----- reset & base ----- */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--black);
+      color: var(--off-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ----- custom scrollbar ----- */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--stone);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
+    /* ----- utility ----- */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ============================================================
+       HERO — CINEMATIC BRAND STATEMENT
+       ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--black);
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    /* layered ambient glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201, 169, 97, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 90%, rgba(201, 169, 97, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 15% 80%, rgba(201, 169, 97, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* fine grain texture overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    /* vertical side lines — editorial */
+    .hero .side-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold-dim) 30%, var(--gold-dim) 70%, transparent);
+      z-index: 2;
+    }
+
+    .hero .side-line.left { left: 3rem; }
+    .hero .side-line.right { right: 3rem; }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      max-width: 1000px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 1.4s var(--ease) 0.5s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 60px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+      opacity: 0;
+      animation: scaleIn 1s var(--ease) 1s forwards;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-sans);
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 0.8s forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 3.5rem;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--gold-dim);
+      background: transparent;
+      color: var(--gold);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.5s var(--ease);
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 1.1s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s var(--ease);
+      z-index: -1;
+    }
+
+    .hero-cta:hover {
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    .hero-cta:hover::before {
+      transform: scaleX(1);
+    }
+
+    .hero-cta .arrow {
+      transition: transform 0.4s var(--ease);
+    }
+
+    .hero-cta:hover .arrow {
+      transform: translateX(6px);
+    }
+
+    /* scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.6s forwards;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ============================================================
+       NAVIGATION — REFINED LUXURY
+       ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.8rem 0;
+      background: transparent;
+      transition: background 0.5s var(--ease), padding 0.5s var(--ease), backdrop-filter 0.5s var(--ease);
+    }
+
+    .nav.scrolled {
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(201, 169, 97, 0.1);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-logo em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color 0.4s var(--ease);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.4s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* mobile menu toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      transition: all 0.4s var(--ease);
+    }
+
+    /* ============================================================
+       SECTION HEADINGS — EDITORIAL STYLE
+       ============================================================ */
+    .section {
+      padding: 8rem 0;
+      position: relative;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label .line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold-dim);
+    }
+
+    .section-label .text {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .section-desc {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+    }
+
+    /* ============================================================
+       ABOUT — BRAND PHILOSOPHY
+       ============================================================ */
+    .about {
+      background: var(--near-black);
+      position: relative;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .about-visual {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .about-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(30%) brightness(0.85);
+      transition: filter 1s var(--ease), transform 1.5s var(--ease);
+    }
+
+    .about-visual:hover img {
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.05);
+    }
+
+    .about-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(201, 169, 97, 0.2);
+      pointer-events: none;
+    }
+
+    .about-visual .frame {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      right: -1.5rem;
+      bottom: -1.5rem;
+      border: 1px solid var(--gold-dim);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .about-text h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text h3 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.2px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--stone);
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+    }
+
+    /* ============================================================
+       PRODUCTS — EDITORIAL COLLECTION
+       ============================================================ */
+    .products-section {
+      background: var(--black);
+      position: relative;
+    }
+
+    .products-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .product-card {
+      position: relative;
+      background: var(--charcoal);
+      overflow: hidden;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-image {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: var(--graphite);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(40%) brightness(0.8);
+      transition: filter 0.8s var(--ease), transform 1.2s var(--ease);
+    }
+
+    .product-card:hover .product-image img {
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.06);
+    }
+
+    .product-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 5, 5, 0.7) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      z-index: 3;
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(5, 5, 5, 0.85);
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--gold-dim);
+      backdrop-filter: blur(8px);
+    }
+
+    .product-info {
+      padding: 2rem 1.8rem 2.2rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .product-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 1.8rem;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      transition: gap 0.4s var(--ease);
+    }
+
+    .product-link:hover {
+      gap: 1rem;
+    }
+
+    .product-link .arrow {
+      transition: transform 0.4s var(--ease);
+    }
+
+    .product-link:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* ============================================================
+       CRAFT / VALUES — REFINED DETAILS
+       ============================================================ */
+    .craft {
+      background: var(--near-black);
+      position: relative;
+    }
+
+    .craft::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+
+    .craft-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .craft-item {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border: 1px solid var(--stone);
+      transition: border-color 0.5s var(--ease), background 0.5s var(--ease);
+    }
+
+    .craft-item:hover {
+      border-color: var(--gold-dim);
+      background: rgba(201, 169, 97, 0.02);
+    }
+
+    .craft-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+      display: block;
+    }
+
+    .craft-item h4 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .craft-item p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--muted-dark);
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+    }
+
+    /* ============================================================
+       CONTACT — ELEGANT INQUIRY
+       ============================================================ */
+    .contact {
+      background: var(--black);
+      position: relative;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-top: 4rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border: 1px solid var(--stone);
+      transition: border-color 0.5s var(--ease), transform 0.5s var(--ease);
+    }
+
+    .contact-item:hover {
+      border-color: var(--gold-dim);
+      transform: translateY(-5px);
+    }
+
+    .contact-item .icon {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      display: block;
+      color: var(--gold);
+    }
+
+    .contact-item .label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-item .value {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+
+    .contact-item a.value {
+      text-decoration: none;
+      transition: color 0.4s var(--ease);
+    }
+
+    .contact-item a.value:hover {
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       FOOTER — TIMELESS SIGNATURE
+       ============================================================ */
+    .footer {
+      background: var(--black);
+      padding: 5rem 0 2.5rem;
+      border-top: 1px solid var(--stone);
+      position: relative;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand h3 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted-dark);
+      line-height: 1.9;
+      max-width: 340px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-col a {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.4s var(--ease), padding-left 0.4s var(--ease);
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+      padding-left: 6px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--stone);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: var(--muted-dark);
+      text-transform: uppercase;
+    }
+
+    .footer-bottom .gold {
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       ANIMATIONS
+       ============================================================ */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scaleY(0);
+      }
+      to {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+      50% {
+        opacity: 0.3;
+        transform: scaleY(0.6);
+      }
+    }
+
+    /* scroll reveal utility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       RESPONSIVE — FLUID WORLD-CLASS ADAPTATION
+       ============================================================ */
+    @media (max-width: 1200px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .craft-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        gap: 4rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 360px;
+        height: 100vh;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(30px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+        transition: right 0.6s var(--ease);
+        border-left: 1px solid var(--gold-dim);
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+        letter-spacing: 4px;
+      }
+
+      .nav-toggle {
+        display: flex;
+        z-index: 101;
+      }
+
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-visual {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .about-visual .frame {
+        display: none;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero .side-line {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .craft-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: clamp(2.8rem, 14vw, 4rem);
+      }
+
+      .hero-cta {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+      }
+
+      .nav {
+        padding: 1.2rem 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .hero-eyebrow {
+        letter-spacing: 4px;
+        font-size: 0.6rem;
+      }
+
+      .hero-subtitle {
+        letter-spacing: 3px;
+        font-size: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Premium Wear BD</h1>
-    <p>Export Quality Fashion for Men & Women</p>
-  </header>
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">Premium <em>Wear</em> BD</a>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#craft">Craft</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We provide premium export-quality pants, t-shirts, and fashion essentials at affordable prices.</p>
+  <!-- ============================================================
+       HERO — CINEMATIC BRAND STATEMENT
+       ============================================================ -->
+  <section class="hero">
+    <div class="side-line left"></div>
+    <div class="side-line right"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Export Quality · Est. Bangladesh</p>
+      <h1 class="hero-title">Timeless <em>Elegance</em><br>Redefined</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtitle">Premium Fashion for Men &amp; Women</p>
+      <a href="#collection" class="hero-cta">
+        Explore Collection
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
   </section>
 
-  <div class="products">
-  <div class="product">
-    <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg" alt="Pant">
-    <h3>Premium Pants</h3>
-    <p>Comfortable, stylish, and durable.</p>
-  </div>
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1520975918318-3f6c3b1e0c1a" alt="T-Shirt">
-    <h3>Classic T-Shirts</h3>
-    <p>Soft cotton, export quality.</p>
-  </div>
-  <div class="product">
-    <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/jeans-1867077_960_720.jpg" alt="Jeans">
-    <h3>Denim Jeans</h3>
-    <p>Trendy fits for all occasions.</p>
-  </div>
-</div>
+  <!-- ============================================================
+       ABOUT — BRAND PHILOSOPHY
+       ============================================================ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="line"></span>
+        <span class="text">Our Story</span>
+        <span class="line"></span>
+      </div>
+      <h2 class="section-title reveal">Crafted with <em>Purpose</em></h2>
 
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="frame"></div>
+          <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg" alt="Premium fabric detail">
+        </div>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>📞 +880 1644-684978</p>
-    <p>📧 premiumwearbd@gmail.com</p>
-    <p>📍 Bogura, Bangladesh</p>
+        <div class="about-text reveal">
+          <h3>Where <em>luxury</em> meets accessibility</h3>
+          <p>Premium Wear BD was founded on a simple belief: world-class fashion should not be a privilege. We bridge the gap between export-quality craftsmanship and everyday elegance.</p>
+          <p>Every garment is meticulously constructed using ethically sourced fabrics, precision tailoring, and a relentless attention to detail. From the first stitch to the final press, our pieces are designed to endure — in style and in substance.</p>
+
+          <div class="about-stats">
+            <div>
+              <div class="stat-number">12<span style="font-size:1.2rem;">+</span></div>
+              <div class="stat-label">Years of Craft</div>
+            </div>
+            <div>
+              <div class="stat-number">50<span style="font-size:1.2rem;">k</span></div>
+              <div class="stat-label">Happy Clients</div>
+            </div>
+            <div>
+              <div class="stat-number">100<span style="font-size:1.2rem;">%</span></div>
+              <div class="stat-label">Export Quality</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2026 Premium Wear BD</p>
-    <p>New Arrivals · Trendy Styles · Best Prices</p>
+  <!-- ============================================================
+       PRODUCTS — EDITORIAL COLLECTION
+       ============================================================ -->
+  <section class="section products-section" id="collection">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="line"></span>
+        <span class="text">The Collection</span>
+        <span class="line"></span>
+      </div>
+      <h2 class="section-title reveal">Signature <em>Pieces</em></h2>
+      <p class="section-desc reveal">A curated selection of essentials designed for the modern wardrobe — where comfort, durability, and refined aesthetics converge.</p>
+
+      <div class="products-grid">
+        <!-- product 1 -->
+        <article class="product-card reveal">
+          <div class="product-image">
+            <span class="product-badge">Best Seller</span>
+            <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg" alt="Premium tailored pants">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Premium Pants</h3>
+            <p class="product-desc">Tailored for comfort. Built to last. A refined silhouette for every occasion.</p>
+            <a href="#contact" class="product-link">Inquire <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <!-- product 2 -->
+        <article class="product-card reveal">
+          <div class="product-image">
+            <span class="product-badge">New Arrival</span>
+            <img src="https://images.unsplash.com/photo-1520975918318-3f6c3b1e0c1a" alt="Classic cotton t-shirt">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Classic T-Shirts</h3>
+            <p class="product-desc">Soft, breathable cotton with an impeccable finish. The foundation of a timeless wardrobe.</p>
+            <a href="#contact" class="product-link">Inquire <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <!-- product 3 -->
+        <article class="product-card reveal">
+          <div class="product-image">
+            <span class="product-badge">Limited</span>
+            <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/jeans-1867077_960_720.jpg" alt="Trendy denim jeans">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Denim Jeans</h3>
+            <p class="product-desc">Contemporary fits crafted from premium denim. Designed to move with you.</p>
+            <a href="#contact" class="product-link">Inquire <span class="arrow">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CRAFT — REFINED VALUES
+       ============================================================ -->
+  <section class="section craft" id="craft">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="line"></span>
+        <span class="text">Our Promise</span>
+        <span class="line"></span>
+      </div>
+      <h2 class="section-title reveal">The <em>Craft</em> Standard</h2>
+      <p class="section-desc reveal">Four pillars that define every piece we create — an uncompromising commitment to excellence.</p>
+
+      <div class="craft-grid">
+        <div class="craft-item reveal">
+          <span class="craft-icon">✦</span>
+          <h4>Premium Materials</h4>
+          <p>Hand-selected fabrics sourced from the finest mills, ensuring lasting quality and comfort.</p>
+        </div>
+        <div class="craft-item reveal">
+          <span class="craft-icon">✧</span>
+          <h4>Precision Tailoring</h4>
+          <p>Every seam, every stitch — crafted by skilled artisans with decades of expertise.</p>
+        </div>
+        <div class="craft-item reveal">
+          <span class="craft-icon">◆</span>
+          <h4>Ethical Production</h4>
+          <p>Responsibly made in Bangladesh, supporting local craftsmanship and fair practices.</p>
+        </div>
+        <div class="craft-item reveal">
+          <span class="craft-icon">◇</span>
+          <h4>Timeless Design</h4>
+          <p>Styles that transcend trends — designed to remain relevant season after season.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT — ELEGANT INQUIRY
+       ============================================================ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="line"></span>
+        <span class="text">Get in Touch</span>
+        <span class="line"></span>
+      </div>
+      <h2 class="section-title reveal">Begin Your <em>Journey</em></h2>
+      <p class="section-desc reveal">Whether you're sourcing for retail or curating a personal wardrobe, our team is here to assist you.</p>
+
+      <div class="contact-grid">
+        <div class="contact-item reveal">
+          <span class="icon">☎</span>
+          <div class="label">Phone</div>
+          <a href="tel:+8801644684978" class="value">+880 1644-684978</a>
+        </div>
+        <div class="contact-item reveal">
+          <span class="icon">✉</span>
+          <div class="label">Email</div>
+          <a href="mailto:premiumwearbd@gmail.com" class="value">premiumwearbd@gmail.com</a>
+        </div>
+        <div class="contact-item reveal">
+          <span class="icon">⌖</span>
+          <div class="label">Location</div>
+          <span class="value">Bogura, Bangladesh</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER — TIMELESS SIGNATURE
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h3>Premium <em>Wear</em> BD</h3>
+          <p>Export-quality fashion crafted with purpose. Timeless designs, premium materials, and an unwavering commitment to excellence.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#craft">Our Craft</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Premium Wear BD. All rights reserved.</p>
+        <p>New Arrivals · <span class="gold">Trendy Styles</span> · Best Prices</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — INTERACTIONS
+       ============================================================ -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ----- nav scroll effect ----- */
+      const nav = document.getElementById('nav');
+      let lastScroll = 0;
+
+      window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 80) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+      }, { passive: true });
+
+      /* ----- mobile menu toggle ----- */
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      navToggle.addEventListener('click', function() {
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('open');
+      });
+
+      /* close mobile menu on link click */
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('open');
+        });
+      });
+
+      /* ----- scroll reveal with IntersectionObserver ----- */
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+          revealObserver.observe(el);
+        });
+      } else {
+        /* fallback for older browsers */
+        revealElements.forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }
+
+      /* ----- smooth scroll for anchor links (native fallback) ----- */
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      /* ----- subtle parallax on hero (performance-friendly) ----- */
+      const hero = document.querySelector('.hero');
+      if (hero && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            window.requestAnimationFrame(function() {
+              const scrolled = window.pageYOffset;
+              const heroContent = hero.querySelector('.hero-content');
+              if (heroContent && scrolled < window.innerHeight) {
+                heroContent.style.transform = 'translateY(' + (scrolled * 0.15) + 'px)';
+                heroContent.style.opacity = 1 - (scrolled / (window.innerHeight * 0.9));
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+
+    })();
+  </script>
 
 </body>
 </html>
